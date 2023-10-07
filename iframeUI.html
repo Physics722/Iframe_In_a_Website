@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <Head>
+        <title>iframeUI</title>
+        <script></script>
+        <style>
+            body {
+                overflow:hidden;
+            }
+            
+            footer {
+            	background-color: rgb(152, 152, 152);
+            	margin: 0px;
+            	padding: 10px;
+            	position: fixed;
+            	left: 0px;
+            	bottom: 0px;
+            	right: 0px;
+            }
+        </style>
+        <link rel="stylesheet" href="">
+        <meta name="viewport" content="width=device-width">
+        <meta charset="utf-8">
+    </Head>
+    <body onresize="windowResize()">
+        <header>
+            <h1>Iframe UI</h1>
+        </header>
+
+        <section>
+            <form onsubmit="go()">
+                <input type="text" id="url">
+                <input type="submit">
+            </form>
+        </section>
+
+        <footer>
+           <span class="copyright">© Darcy Moloney 2023. All rights reserved.</span>
+        </footer>
+    </body>
+    <script>
+        function go() {
+            console.log("hi");
+            var link = document.getElementById("url").value;
+            console.log(link);
+            document.getElementsByTagName('body')[0].innerHTML = `<iframe src="${link}" style="height:100%;width:100%"></iframe>`
+            windowResize();
+        }
+
+        function windowResize(){
+            //console.log(window.innerHeight-10 + "px");
+            document.getElementsByTagName('iframe')[0].style.height = window.innerHeight-20 + "px";
+            document.getElementsByTagName('iframe')[0].style.width = window.innerWidth-20 + "px";
+        }
+    </script>
+</html>
